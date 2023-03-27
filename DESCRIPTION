@@ -28,7 +28,8 @@ Imports:
     assertthat,
     rvest,
     httpproblems,
-    crayon
+    crayon,
+    glue
 RoxygenNote: 7.2.3
 Depends: 
     R (>= 4.2.0)

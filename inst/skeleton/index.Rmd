@@ -1,0 +1,56 @@
+---
+title: {title}
+output: {format}
+params:
+  flexTeaching_pars:
+    value:
+      solutions: true
+  flexTeaching:
+    value:
+      title: {title}
+      short_title: {short_title}
+      seed_salt: {seed_salt}
+      data_salt: {data_salt}
+      hide_before: {hide_before}
+      restrict_before: {restrict_before}
+      files:
+        assignment_data.csv:
+          label: Data
+          icon: 'fa-solid fa-lg fa-file'
+          filename: flexTeaching3.api::ft3_create_filename
+---
+
+```{{r setup, include=FALSE}}
+knitr::opts_chunk$set(
+  echo = FALSE
+  , dev = "png"
+  , dpi = 300
+  )
+
+# For convenience; we use this options template to flag solutions blocks
+knitr::opts_template$set(solutions = list(
+  eval    = params$flexTeaching_pars$solutions, 
+  include = params$flexTeaching_pars$solutions
+  )
+)
+
+# Replace this with your random data; it will be served if you 
+# keep the files: settings in the YAML header
+my_data = sleep
+write.csv(my_data, 'assignment_data.csv', row.names = FALSE)
+
+```
+
+## This is an example section.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla neque. Integer et nisi at lectus tristique auctor quis in diam. Duis ullamcorper felis id varius mattis. Praesent vitae posuere metus. Nulla facilisi. Suspendisse potenti. Morbi sit amet libero orci. Vestibulum vestibulum turpis at nulla pulvinar, quis placerat justo suscipit. 
+
+```{{r opts.label='solutions'}}
+
+boxplot(extra ~ group, data = my_data)
+```
+
+## Another example section
+
+Mauris nec elementum quam. Fusce egestas est tincidunt nulla hendrerit dictum. Donec lobortis, libero et sagittis scelerisque, ex ex vestibulum tortor, sit amet condimentum ipsum lacus id turpis. Cras et nunc porttitor, mollis tortor ac, tincidunt enim. Nunc turpis ex, porta porttitor magna in, gravida blandit neque. Sed convallis tristique nunc sit amet efficitur. Nunc auctor sapien nec dolor congue, a ornare ex tempus. 
+
