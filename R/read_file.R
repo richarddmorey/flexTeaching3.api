@@ -27,6 +27,12 @@ ft3_read_file_raw <- function(path){
 #'
 #' @examples
 ft3_read_file_text <- function(path){
-  ft3_read_file_raw(path) |> rawToChar()
+  if(!file.exists(path))
+    stop('File ', path, ' not found.')
+  to.read <- file(path, "rb")
+  on.exit({
+    close(to.read)
+  })
+  readChar(to.read, file.size(path))
 }
 
