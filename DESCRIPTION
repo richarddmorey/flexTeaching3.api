@@ -1,0 +1,35 @@
+Package: flexTeaching3.api
+Type: Package
+Title: REST API for flexTeaching3 assignments served
+Version: 0.1
+Date: 2022-11-21
+Author: Richard D. Morey
+Maintainer: Richard D. Morey <richarddmorey@gmail.com>
+Description: Use RestRserve to serve the backend API for compiling and serving flexTeaching3 assignments 
+License: Mozilla Public License 2.0
+Encoding: UTF-8
+Imports: 
+    base64enc,
+    cachem,
+    Cairo,
+    digest,
+    jsonlite,
+    R.utils,
+    readr,
+    RestRserve,
+    rmarkdown,
+    settings,
+    tools,
+    utils,
+    withr,
+    callr,
+    purrr,
+    dplyr,
+    lubridate,
+    assertthat,
+    rvest,
+    httpproblems,
+    crayon
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 4.2.0)

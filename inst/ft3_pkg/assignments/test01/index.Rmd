@@ -1,0 +1,97 @@
+---
+title: "Untitled"
+author: "Richard D. Morey"
+date: "`r Sys.Date()`"
+output: html_document
+params:
+  flexTeaching_pars:
+    value:
+      solutions: false  
+  flexTeaching:
+    value:
+      title: Assignment 1
+      short_title: PS2024_1
+      seed_salt: y1u2qqfapmkzghrl1rr83i7gxg1phc3
+      data_salt: z4e68qyvo21ecidgt8vzyrppfwagg5z
+      hide_before: '2023-02-01 12:00:00'
+      restrict_before: '2023-02-01 12:00:00'
+      files:
+        file1.csv:
+          label: Data
+          icon: 'fa-solid fa-lg fa-file-csv'
+          filename: flexTeaching3.api::ft3_create_filename
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo = TRUE
+  , dev='CairoPNG'
+)
+
+knitr::opts_hooks$set(
+  solutions = function(options) {
+      options$eval    = params$flexTeaching_pars$solutions
+      options$include = params$flexTeaching_pars$solutions
+      return(options)
+    }
+)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Files
+
+```{r}
+write.csv(sleep, file = 'file1.csv')
+```
+
+```{r}
+sleep
+```
+
+
+## RNG
+
+```{r}
+rnorm(10)
+```
+
+
+$$
+  x = y
+$$
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r echo=FALSE}
+plot(pressure)
+```
+
+```{r echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## pars
+
+The following chunk should only be shown when solutions are enabled.
+
+```{r solutions = TRUE}
+params$flexTeaching_pars
+```
+
+
+
