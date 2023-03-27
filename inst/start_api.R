@@ -2,7 +2,7 @@
 library(flexTeaching3.api)
 
 flexTeaching3.api::ft3_options(master_secret = 'curious_capybara')
-flexTeaching3.api::ft3_options(assignments_pkg = 'flexTeaching3.cardiff')
+flexTeaching3.api::ft3_options(assignments_pkg = 'flexTeaching3.api')
 
 tmpdir = '/tmp/ft3_scratch'
 
