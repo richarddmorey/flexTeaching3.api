@@ -9,7 +9,6 @@
 #'
 #' @return
 #' @importFrom lubridate now
-#' @importFrom readr read_file read_file_raw
 #' @importFrom cachem is.key_missing 
 #' @importFrom tools file_ext
 #'
@@ -54,11 +53,11 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
     # Check file content type
     out_ext <- tools::file_ext(outfile) |> tolower()
     if(out_ext == 'html'){
-      content <- readr::read_file(file = outfile)
+      content <- ft3_read_file_text(path = outfile)
       if(!ft3_is_fragment(outfile))
         content <- ft3_insert_iframe_resizer(content)
     }else{
-      content <- readr::read_file_raw(file = outfile)
+      content <- ft3_read_file_raw(path = outfile)
     }
     # output content and settings
     out <- list(
@@ -102,12 +101,11 @@ ft3_assignment_settings <- function(doc_file){
 #' @param pars The parameters passed from the client
 #'
 #' @return
-#' @importFrom readr read_file
 #' @importFrom purrr map set_names
 #'
 #' @examples
 ft3_read_assignment_output <- function(outfile, settings, pars){
-  outfile_contents <- readr::read_file(outfile)
+  outfile_contents <- ft3_read_file_text(outfile)
   outfile_dir <- dirname(outfile)
   names(settings$files) |>
     purrr::map(\(fn){

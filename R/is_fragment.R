@@ -5,7 +5,6 @@
 #' @return
 #' @importFrom tools file_ext
 #' @importFrom rvest read_html html_elements
-#' @importFrom readr read_file
 #' @importFrom assertthat assert_that is.string
 #'
 #' @examples
@@ -16,7 +15,7 @@ ft3_is_fragment <- function(file_path){
   out_ext <- tools::file_ext(file_path) |> tolower()
   if(out_ext != 'html') return(FALSE)
   
-  content <- readr::read_file(file_path)
+  content <- ft3_read_file_text(file_path)
   assertthat::assert_that(is.string(content))
   
   split(content, '\n')[1] |>
