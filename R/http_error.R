@@ -35,6 +35,7 @@ ft3_http_error_wrapper = function(FUN, .custom_message = NULL, .status_code = 50
     error = function(e){
       e |> 
         conditionMessage() |> 
+        paste0('; ', conditionCall(e)) |>
         crayon::strip_style() |>
         gsub(pattern = '\n', replacement = ' ', x = _) |> 
         paste('Error:', x = _) |>
