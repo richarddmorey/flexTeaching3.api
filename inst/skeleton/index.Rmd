@@ -8,7 +8,6 @@ params:
   flexTeaching:
     value:
       menu: {title}
-      short_title: {short_title}
       seed_salt: {seed_salt}
       data_salt: {data_salt}
       hide_before: {hide_before}
@@ -25,6 +24,7 @@ knitr::opts_chunk$set(
   echo = FALSE
   , dev = "png"
   , dpi = 300
+  , out.width = ifelse(knitr::is_latex_output(), '.8\\linewidth', '80%')
   )
 
 # For convenience; we use this options template to flag solutions blocks
@@ -51,6 +51,10 @@ boxplot(extra ~ group, data = my_data)
 ```
 
 ## Another example section
+
+\[
+\bar{{X}} = \frac{{1}}{{N}}\sum_{{i=1}}^N X_i
+\]
 
 Mauris nec elementum quam. Fusce egestas est tincidunt nulla hendrerit dictum. Donec lobortis, libero et sagittis scelerisque, ex ex vestibulum tortor, sit amet condimentum ipsum lacus id turpis. Cras et nunc porttitor, mollis tortor ac, tincidunt enim. Nunc turpis ex, porta porttitor magna in, gravida blandit neque. Sed convallis tristique nunc sit amet efficitur. Nunc auctor sapien nec dolor congue, a ornare ex tempus. 
 
