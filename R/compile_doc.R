@@ -81,7 +81,6 @@ ft3_assignment_settings <- function(doc_file){
 #' @importFrom purrr map set_names
 #' @importFrom utils URLdecode
 ft3_read_assignment_output <- function(outfile, settings, pars){
-  outfile_contents <- ft3_read_file_text(outfile)
   outfile_dir <- dirname(outfile)
   names(settings$files) |>
     purrr::map(\(fn){
