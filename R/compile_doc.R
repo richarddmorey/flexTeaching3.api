@@ -1,18 +1,7 @@
 
-#' Wrapper to compile assignments of different types
-#'
-#' @param doc_file 
-#' @param pars
-#' @param ft3_cache
-#' @param scratch_dir
-#' @param ... 
-#'
-#' @return
 #' @importFrom lubridate now
 #' @importFrom cachem is.key_missing 
 #' @importFrom tools file_ext
-#'
-#' @examples
 ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options('cache_location'), ...){
   
   doc_file <- normalizePath(doc_file)
@@ -75,13 +64,7 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
   return(out)
 }
 
-#' Title
-#'
-#' @param doc_file 
-#'
-#' @return
-#'
-#' @examples
+#' @importFrom tools file_ext
 ft3_assignment_settings <- function(doc_file){
   ext <- tools::file_ext(doc_file) |> tolower()
   doc_file <- normalizePath(doc_file)
@@ -94,16 +77,9 @@ ft3_assignment_settings <- function(doc_file){
   do.call(ft3_assignment_default_settings, settings)
 }
 
-#' Read the specified files that were written by an assignment
-#'
-#' @param outfile Path to the file that was written
-#' @param settings The compilation settings (from the yaml header)
-#' @param pars The parameters passed from the client
-#'
-#' @return
+
 #' @importFrom purrr map set_names
-#'
-#' @examples
+#' @importFrom utils URLdecode
 ft3_read_assignment_output <- function(outfile, settings, pars){
   outfile_contents <- ft3_read_file_text(outfile)
   outfile_dir <- dirname(outfile)
@@ -111,7 +87,7 @@ ft3_read_assignment_output <- function(outfile, settings, pars){
     purrr::map(\(fn){
       fp <- file.path(outfile_dir, fn)
       if(!file.exists(fp)){
-        stop('File ', fn, ' was not created for assignment ', settings$short_title)
+        stop('File ', fn, ' was not created for assignment ', utils::URLdecode(settings$ref))
       }
       to.read <- file(fp, "rb")
       content <- readBin(to.read, "raw", file.size(fp))
@@ -135,7 +111,7 @@ ft3_read_assignment_output <- function(outfile, settings, pars){
         if(inherits(new_fn, 'try-error'))
           stop('Could not determine filename using ',
                fn_function, 
-               ' for assignment ', settings$short_title)
+               ' for assignment ', utils::URLdecode(settings$ref))
       }
       # Return list
       list(

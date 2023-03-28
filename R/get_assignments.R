@@ -1,11 +1,4 @@
-#' Title
-#'
-#' @param assignments_dir 
-#' @param just_labels 
-#'
-#' @return
-#'
-#' @examples
+
 ft3_get_assignments = function(assignments_dir =  ft3_options('assignments_dir')){
   potential_assignments = list.dirs(assignments_dir, recursive = FALSE, full.names = FALSE) |> 
     file.path(assignments_dir, x = _) |>
@@ -26,11 +19,11 @@ ft3_get_assignments = function(assignments_dir =  ft3_options('assignments_dir')
     }) |>
     Filter(Negate(is.null), x = _) -> assignments
   
-  nm = sapply(assignments, \(e) e$short_title ) 
+  nm = sapply(assignments, \(e) e$ref )
   
   if(any(duplicated(nm)))
     stop(
-      'All assignment short_title elements must be unique. Offenders: ', 
+      'All assignment ref elements must be unique. Offenders: ', 
       paste(nm[duplicated]), collapse = ', '
       )
     
@@ -40,16 +33,10 @@ ft3_get_assignments = function(assignments_dir =  ft3_options('assignments_dir')
 
 }
 
-#' Title
-#'
-#' @param assignments_dir 
-#'
-#' @return
+
 #' @importFrom purrr map_df map_lgl map2_lgl map_dbl
 #' @importFrom lubridate now as_datetime
 #' @importFrom dplyr mutate across filter arrange bind_rows if_else
-#'
-#' @examples
 ft3_get_assignments_simple <- function(assignments_dir = ft3_options('assignments_dir'), current_assignment = NULL){
   a <- ft3_get_assignments(assignments_dir)
   if(length(a)<=1L)
@@ -58,8 +45,8 @@ ft3_get_assignments_simple <- function(assignments_dir = ft3_options('assignment
   a |>
     purrr::map_df(\(e){
       dplyr::bind_rows(
-        label = e$title,
-        value = e$short_title,
+        label = e$menu,
+        value = e$ref,
         hide_before = e$hide_before,
         restrict_before = e$restrict_before,
         category = e$category,
@@ -85,37 +72,9 @@ ft3_get_assignments_simple <- function(assignments_dir = ft3_options('assignment
     )
 }
 
-#' Title
-#'
-#' @param date 
-#'
-#' @return
-#' @importFrom lubridate parse_date_time as_datetime
-#'
-#' @examples
-ft3_parse_date <- function(date){
-  ifelse(
-    is.na(date) || is.null(date),
-    lubridate::as_datetime(-Inf),
-    lubridate::parse_date_time(
-      date,
-      orders = ft3_options('lubridate_orders'),
-      tz = ft3_options('timezone'))
-  )
-}
-
-
-#' Title
-#'
-#' @param assignments_dir 
-#' @param ... 
-#'
-#' @return
 #' @importFrom purrr map
 #' @importFrom dplyr select rename
 #' @importFrom jsonlite toJSON
-#'
-#' @examples
 ft3_get_assignments_select2 <- function(assignments_dir = ft3_options('assignments_dir'), ...){
   
   assignments_df <- ft3_get_assignments_simple(assignments_dir, ...) 
@@ -136,33 +95,14 @@ ft3_get_assignments_select2 <- function(assignments_dir = ft3_options('assignmen
     jsonlite::toJSON(auto_unbox = TRUE)
 }
 
-#' Title
-#'
-#' @param file_ 
-#' @param title 
-#' @param short_title 
-#' @param seed_salt 
-#' @param data_salt 
-#' @param hide_before 
-#' @param restrict_before 
-#' @param fragment
-#' @param use_callr 
-#' @param files 
-#' @param category 
-#' @param sortkey 
-#' @param on_load 
-#' @param exam 
-#' @param cache
-#' @param ... 
-#'
-#' @return
 #' @importFrom tools md5sum
 #' @importFrom assertthat assert_that is.string is.flag
-#'
+#' @importFrom utils URLencode
 ft3_assignment_default_settings <- function(
     file_ = stop('The file_ argument must be set in assignment_default_settings().'),
-    short_title = dirname(file_) |> basename(),
-    title = short_title,
+    title = dirname(file_) |> basename(),
+    menu = title,
+    ref = dirname(file_) |> basename() |> utils::URLencode(),
     seed_salt = tools::md5sum(file_),
     data_salt = tools::md5sum(file_),
     hide_before = NA_character_,
@@ -183,7 +123,8 @@ ft3_assignment_default_settings <- function(
   assertthat::assert_that(file.exists(file_))
   
   assertthat::assert_that(assertthat::is.string(title))
-  assertthat::assert_that(assertthat::is.string(short_title))
+  assertthat::assert_that(assertthat::is.string(ref))
+  assertthat::assert_that(assertthat::is.string(menu))  
   assertthat::assert_that(assertthat::is.string(seed_salt))
   assertthat::assert_that(assertthat::is.string(data_salt))
   assertthat::assert_that(assertthat::is.string(hide_before))

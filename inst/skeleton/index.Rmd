@@ -7,7 +7,7 @@ params:
       solutions: true
   flexTeaching:
     value:
-      title: {title}
+      menu: {title}
       short_title: {short_title}
       seed_salt: {seed_salt}
       data_salt: {data_salt}

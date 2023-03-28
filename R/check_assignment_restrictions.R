@@ -1,13 +1,6 @@
 
-#' Title
-#'
-#' @param settings 
-#' @param pars 
-#'
-#' @return
+
 #' @importFrom lubridate now
-#'
-#' @examples
 ft3_check_assignment_restrictions <- function(settings, pars, check_exam = TRUE){
   
   # Error if assignment is an exam and you've asked for practice

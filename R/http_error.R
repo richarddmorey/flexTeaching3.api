@@ -1,15 +1,7 @@
 
-#' Throw an HTTP error, with problem details
-#'
-#' @param status valid
-#' @param detail 
-#'
-#' @return
 #' @importFrom httpproblems http_problem
 #' @importFrom jsonlite toJSON
 #' @importFrom RestRserve HTTPError raise
-#'
-#' @examples
 ft3_http_error <- function(status_code, detail){
   httpproblems::http_problem(status = status_code, detail = detail) |>
     jsonlite::toJSON(auto_unbox = TRUE) |>
@@ -25,16 +17,8 @@ ft3_http_error <- function(status_code, detail){
     RestRserve::raise(err)
 }
 
-#' Title
-#'
-#' @param FUN 
-#' @param .custom_message 
-#' @param ... 
-#'
-#' @return
+
 #' @importFrom crayon strip_style
-#'
-#' @examples
 ft3_http_error_wrapper = function(FUN, .custom_message = NULL, .status_code = 500, ...){
   fun_name <- substitute(FUN)
   if(is.null(.custom_message)){

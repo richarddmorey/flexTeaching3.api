@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_filename.R
 \name{ft3_create_filename}
 \alias{ft3_create_filename}
-\title{Title}
+\title{Create a file name from flexTeaching parameters}
 \usage{
 ft3_create_filename(
   filename,
@@ -16,8 +16,25 @@ ft3_create_filename(
 )
 }
 \arguments{
-\item{...}{}
+\item{filename}{The original file name}
+
+\item{assignment}{The assignment reference}
+
+\item{id}{The user id parameter}
+
+\item{seed}{The seed parameter}
+
+\item{assignment_mode}{(logical) In assignment mode?}
+
+\item{solutions}{(logical) Solutions requested?}
+
+\item{file_content}{Full content of the file}
+
+\item{...}{Other potential parameters (not currently used)}
+}
+\value{
+A character string to be used as a file name
 }
 \description{
-Title
+Create a file name from flexTeaching parameters
 }

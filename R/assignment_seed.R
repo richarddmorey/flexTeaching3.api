@@ -1,15 +1,5 @@
 
-#' Title
-#'
-#' @param id 
-#' @param seed 
-#' @param salt 
-#' @param assignment_mode 
-#'
-#' @return
 #' @importFrom digest sha1
-#'
-#' @examples
 ft3_assignment_seed <- function(id, seed, data_salt){
 
   c(id, seed, data_salt) |>

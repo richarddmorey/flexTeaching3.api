@@ -1,17 +1,6 @@
-#' Title
-#'
-#' @param file 
-#' @param id 
-#' @param seed 
-#' @param solutions 
-#' @param assignment_mode 
-#' @param assignments_dir
-#'
-#' @return
+
 #' @importFrom digest digest
 #' @importFrom tools md5sum
-#'
-#' @examples
 ft3_get_cache_key = function(file, id, seed, solutions, assignment_mode)
 {
   full_path <- normalizePath(file)  

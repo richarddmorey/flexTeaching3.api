@@ -1,13 +1,17 @@
 
-#' Title
+#' Start the flexTeaching3 API using RestRserve
+#' 
+#' This function is meant to be run from a script, not in an interactive session.
+#' See the file 'start_api.R' script included with this package.
 #'
-#' @param cache_options
-#' @param assignments_pkg 
-#' @param assignments_dir
-#' @param http_port 
-#' @param log_options
+#' @param cache_options List of options to be passed to cachem::disk_cache()
+#' @param assignments_pkg Package containing the assignments
+#' @param assignments_dir Optional directory containing the assignments; if not specified, will be inferred from assignments_pkg.
+#' @param http_port Port to start the server
+#' @param log_options List of options for the log, to be passed to RestRserve::Logger$new()
+#' @param ... Further arguments to be passed to the RestRserve backend's start() method
 #'
-#' @return
+#' @return The result from the RestRserve backend's start() method
 #' @export
 #' @importFrom jsonlite fromJSON toJSON
 #' @importFrom cachem cache_disk is.key_missing
@@ -24,7 +28,8 @@ ft3_serve_api <- function(
   assignments_pkg = ft3_options('assignments_pkg'),
   assignments_dir = NULL,
   http_port = 8080, 
-  log_options = list(level = 'off')
+  log_options = list(level = 'off'),
+  ...
 )
 {
   
@@ -115,5 +120,5 @@ ft3_serve_api <- function(
   
   app$logger = do.call(what = RestRserve::Logger$new, args = log_options)
   backend = RestRserve::BackendRserve$new()
-  backend$start(app, http_port = http_port)
+  backend$start(app, http_port = http_port, ...)
 }

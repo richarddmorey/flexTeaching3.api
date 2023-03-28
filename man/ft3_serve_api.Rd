@@ -2,23 +2,34 @@
 % Please edit documentation in R/serve_api.R
 \name{ft3_serve_api}
 \alias{ft3_serve_api}
-\title{Title}
+\title{Start the flexTeaching3 API using RestRserve}
 \usage{
 ft3_serve_api(
   cache_options = list(dir = ft3_options("cache_location"), destroy_on_finalize = TRUE),
   assignments_pkg = ft3_options("assignments_pkg"),
   assignments_dir = NULL,
   http_port = 8080,
-  log_options = list(level = "off")
+  log_options = list(level = "off"),
+  ...
 )
 }
 \arguments{
-\item{assignments_pkg}{}
+\item{cache_options}{List of options to be passed to cachem::disk_cache()}
 
-\item{http_port}{}
+\item{assignments_pkg}{Package containing the assignments}
 
-\item{log_options}{}
+\item{assignments_dir}{Optional directory containing the assignments; if not specified, will be inferred from assignments_pkg.}
+
+\item{http_port}{Port to start the server}
+
+\item{log_options}{List of options for the log, to be passed to RestRserve::Logger$new()}
+
+\item{...}{Further arguments to be passed to the RestRserve backend's start() method}
+}
+\value{
+The result from the RestRserve backend's start() method
 }
 \description{
-Title
+This function is meant to be run from a script, not in an interactive session.
+See the file 'start_api.R' script included with this package.
 }

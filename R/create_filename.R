@@ -1,8 +1,17 @@
-#' Title
+#' Create a file name from flexTeaching parameters
+#' 
+#' 
 #'
-#' @param ... 
+#' @param filename The original file name
+#' @param assignment The assignment reference
+#' @param id The user id parameter
+#' @param seed The seed parameter
+#' @param assignment_mode (logical) In assignment mode? 
+#' @param solutions (logical) Solutions requested? 
+#' @param file_content Full content of the file
+#' @param ... Other potential parameters (not currently used)
 #'
-#' @return
+#' @return A character string to be used as a file name
 #' @importFrom glue glue
 #' @importFrom tools file_ext
 #' @importFrom digest digest

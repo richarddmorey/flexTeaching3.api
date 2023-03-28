@@ -1,13 +1,6 @@
 .pkg_global_env <- new.env( parent = emptyenv() )
 
-#' Title
-#'
-#' @param cache_options 
-#'
-#' @return
 #' @importFrom cachem cache_disk
-#'
-#' @examples
 create_cache <- function(
     cache_options = list(
       dir = ft3_options('cache_location'),

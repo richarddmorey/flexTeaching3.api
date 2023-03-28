@@ -7,8 +7,7 @@ params:
   flexTeaching_pars: ''
   flexTeaching:
     value:
-      title: Assignment 2
-      short_title: PS2024_2
+      menu: Assignment 2
       seed_salt: y1u2qqfapmkzghrl1rr83i7gxg1phc
       data_salt: z4e68qyvo21ecidgt8vzyrppfwagg5
       on_load: "console.log('Javascript has been executed.');"

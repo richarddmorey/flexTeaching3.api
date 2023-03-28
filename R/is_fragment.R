@@ -1,13 +1,7 @@
-#' Title
-#'
-#' @param file_path 
-#'
-#' @return
+
 #' @importFrom tools file_ext
 #' @importFrom rvest read_html html_elements
 #' @importFrom assertthat assert_that is.string
-#'
-#' @examples
 ft3_is_fragment <- function(file_path){
   
   assertthat::assert_that(is.string(file_path), file.exists(file_path))

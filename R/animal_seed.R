@@ -1,11 +1,6 @@
-#' Create animal string
-#'
-#' @param seed 
-#'
+
 #' @importFrom digest sha1
 #' @importFrom R.utils withSeed
-#' @return
-#'
 ft3_animal_seed <- function(seed, salt){
   c(seed, salt) |>
     trimws() |>

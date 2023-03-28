@@ -7,21 +7,21 @@
 ft3_assignment_skeleton(
   target_dir,
   title = "Example assignment",
-  short_title = abbreviate(title),
   format = c("html_document", "html_fragment", "pdf_document"),
   ...
 )
 }
 \arguments{
-\item{target_dir}{}
+\item{target_dir}{The directory that is to contain the assignments}
 
-\item{title}{}
+\item{title}{Title for the assignment}
 
-\item{short_title}{}
-
-\item{format}{}
+\item{format}{One of 'html_document', 'html_fragment', or 'pdf_document'}
 
 \item{...}{Not currently used.}
+}
+\value{
+The path of the file written.
 }
 \description{
 Title

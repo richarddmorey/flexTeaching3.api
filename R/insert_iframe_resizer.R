@@ -1,12 +1,6 @@
 
-#' Title
-#'
-#' @param content 
-#'
-#' @return
+
 #' @importFrom xml2 read_html read_xml xml_find_first xml_add_child
-#'
-#' @examples
 ft3_insert_iframe_resizer<- function(content){
 
   system.file('iframeResizerChild/resize_iframe_child_script.js', package = packageName()) |>
