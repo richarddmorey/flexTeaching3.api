@@ -33,6 +33,9 @@ ft3_get_pars <- function(.req, assignment = NULL, file = NULL){
   if(!is.null(pars$assignment_mode)){
    pars$assignment_mode <- as.logical(toupper(pars$assignment_mode))
   } 
+  if(!is.null(pars$cache)){
+    pars$cache <- as.logical(toupper(pars$cache))
+  } 
   if(!is.null(pars$solutions)){
     pars$solutions <- as.logical(toupper(pars$solutions)) && !pars$assignment_mode
   }

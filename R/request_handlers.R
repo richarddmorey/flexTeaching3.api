@@ -13,9 +13,12 @@ ft3_assignment_content_config_handler <- function(.req, .res){
   pars <- ft3_get_pars(.req)
   
   settings = ft3_get_assignments()[[pars$assignment]]
-  
+
   if(is.null(settings))
     ft3_http_error(404, paste("The assignment", pars$assignment, "was not found."))
+  
+  if(!isTRUE(pars$cache))
+    ft3_check_assignment_restrictions(settings, pars)
   
   ft3_compile_doc_http(
     settings$file_,
@@ -25,6 +28,18 @@ ft3_assignment_content_config_handler <- function(.req, .res){
     override_restriction = pars$cache
   ) -> content
   
+  .res$set_content_type("application/json")
+  
+  if(isTRUE(pars$cache)){
+    list(
+      cache = 'OK', 
+      size = object.size(content) |> as.numeric()
+      ) |>
+      jsonlite::toJSON(auto_unbox = TRUE) |>
+      .res$set_body()
+    return()
+  }
+  
   content$content <- NULL
   content$files <- NULL
   
@@ -33,7 +48,6 @@ ft3_assignment_content_config_handler <- function(.req, .res){
   if(inherits(r, 'try-error'))
     content$js <- NULL
   
-  .res$set_content_type("application/json")
   
   content |>
     list(configuration = _) |>

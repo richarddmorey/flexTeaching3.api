@@ -8,7 +8,7 @@ MYPKGOPTIONS <- settings::options_manager(
   assignments_dir = NULL,
   default_file_icon = 'fa-regular fa-download',
   timezone = '', # Defaults to current time zone
-  lubridate_orders = c('HM ymd', 'ymd HM', 'HMS ymd', 'ymd HMS'),
+  lubridate_orders = c('HM ymd', 'ymd HM'),
   default_category_name = 'Uncategorized',
   errors_to_client = FALSE
 )
