@@ -12,8 +12,8 @@ params:
       menu: Assignment 1
       seed_salt: y1u2qqfapmkzghrl1rr83i7gxg1phc3
       data_salt: z4e68qyvo21ecidgt8vzyrppfwagg5z
-      hide_before: '2023-02-01 12:00:00'
-      restrict_before: '2023-02-01 12:00:00'
+      hide_before: '2023-02-01 12:00'
+      restrict_before: '2023-02-01 12:00'
       files:
         file1.csv:
           label: Data
