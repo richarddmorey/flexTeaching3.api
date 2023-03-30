@@ -6,7 +6,7 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
   
   doc_file <- normalizePath(doc_file)
   settings <- ft3_assignment_settings(doc_file)
-  
+  pars$fingerprint = ft3_get_fingerprint(pars$seed, pars$id, settings, pars$assignment_mode)
   seed0 <-  ifelse(
     pars$assignment_mode,
     ft3_seed_from_master(ft3_options('master_secret'), settings[['seed_salt']]),
@@ -55,7 +55,7 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
       file_ext = out_ext,
       pars = pars,
       iframe = !ft3_is_fragment(outfile),
-      fingerprint = ft3_get_fingerprint(pars$seed, pars$id, settings, pars$assignment_mode),
+      fingerprint = pars$fingerprint,
       js = settings[['on_load']]
     )
     if(!is.null(ft3_cache) && (is.null(settings$cache) || settings$cache))
