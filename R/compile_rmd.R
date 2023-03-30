@@ -26,7 +26,7 @@ ft3_compile_doc_rmd <- function(rmd_file, pars, local_seed, temp_space_path, ...
       params = list(flexTeaching_pars = pars)
     )
   )
-  if(use_callr){
+  if(isTRUE(ft3_options('force_callr')) || use_callr){
     outfile <- callr::r(
       \(expr, temp_rmd_file, seed, settings, pars) 
         withr::with_seed(seed, { lapply(expr, eval, envir = new.env())[[2]] }),
@@ -37,7 +37,7 @@ ft3_compile_doc_rmd <- function(rmd_file, pars, local_seed, temp_space_path, ...
   }else{
     #stop('Compiling documents outside of callr::r not supported.')
     outfile <- withr::with_seed(
-      local_seed, { lapply(expr, eval, envir = new.env())[[2]] }
+      local_seed, { lapply(compile_expressions, eval, envir = new.env())[[2]] }
     )
   }
   return(outfile)
