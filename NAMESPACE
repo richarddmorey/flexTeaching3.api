@@ -3,6 +3,7 @@
 export(ft3_assignment_skeleton)
 export(ft3_create_filename)
 export(ft3_options)
+export(ft3_replace_file_ext)
 export(ft3_seed_status_hook)
 export(ft3_serve_api)
 importFrom(R.utils,withSeed)
