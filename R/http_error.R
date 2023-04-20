@@ -2,7 +2,7 @@
 #' @importFrom httpproblems http_problem
 #' @importFrom jsonlite toJSON
 #' @importFrom RestRserve HTTPError raise
-ft3_http_error <- function(status_code, detail){
+ft3_http_error <- function(status_code, detail, error = NULL){
   httpproblems::http_problem(status = status_code, detail = detail) |>
     jsonlite::toJSON(auto_unbox = TRUE) |>
     RestRserve::HTTPError$error(
@@ -41,7 +41,7 @@ ft3_http_error_wrapper = function(FUN, .custom_message = NULL, .status_code = 50
         paste('Error:', x = _) |>
         ifelse(ft3_options('errors_to_client'), yes = _, '') |>
         paste(.custom_message, x = _) |>
-        ft3_http_error(status_code = .status_code, detail = _) 
+        ft3_http_error(status_code = .status_code, detail = _, error = e) 
     })
   }
 } 
