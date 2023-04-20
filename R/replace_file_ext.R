@@ -12,6 +12,8 @@
 #' 
 #' ft3_replace_file_ext('test.csv', 'txt')
 ft3_replace_file_ext <- function(file_name, ext, ...){
+  if(ext == '') 
+    return(tools::file_path_sans_ext(file_name, ...))
   file_name |>
     tools::file_path_sans_ext(...) |>
     paste0('.', ext)
