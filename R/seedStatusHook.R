@@ -1,4 +1,13 @@
-#' @export 
+#' knitr hook to reset seed after running chunk
+#'
+#' This is automatically made available when .Rmd files are compiled.
+#'
+#' @return Returns a hook function
+#' @export
+#'
+#' @examples
+#' 
+#' knitr::knit_hooks$set(ft3_seed_status = flexTeaching3.api::ft3_seed_status_hook)
 ft3_seed_status_hook <- local({
   initial_seed <- NULL
   
