@@ -37,3 +37,4 @@ Suggests:
     testthat (>= 3.0.0),
     stringr
 Config/testthat/edition: 3
+URL: https://richarddmorey.github.io/flexTeaching3.api/
