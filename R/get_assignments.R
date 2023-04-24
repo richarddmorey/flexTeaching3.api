@@ -42,6 +42,9 @@ ft3_get_assignments_simple <- function(assignments_dir = ft3_options('assignment
   if(length(a)<=1L)
     stop('No assignments found in ', normalizePath(assignments_dir), '.')
   
+  # To prevent check notes
+  hide_before <- restrict_before <- value <- category <- sortkey <- NULL
+  
   a |>
     purrr::map_df(\(e){
       dplyr::bind_rows(
@@ -79,6 +82,9 @@ ft3_get_assignments_select2 <- function(assignments_dir = ft3_options('assignmen
   
   assignments_df <- ft3_get_assignments_simple(assignments_dir, ...) 
   assignments_split <- split(assignments_df, assignments_df$category)
+  
+  # To prevent check notes
+  label <- value <- disabled <- NULL
   
   names(assignments_split) |>
     purrr::map(\(n){

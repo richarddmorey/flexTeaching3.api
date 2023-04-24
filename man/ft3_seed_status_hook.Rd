@@ -6,11 +6,21 @@
 \usage{
 ft3_seed_status_hook(before, options, envir, name)
 }
+\arguments{
+\item{before}{Whether the code is running before the chunk is evaluated}
+
+\item{options}{List of options in the current chunk}
+
+\item{envir}{Environment in which the code chunk is evaluated}
+
+\item{name}{The name of the hook}
+}
 \value{
 Returns a hook function
 }
 \description{
 This is automatically made available when .Rmd files are compiled.
+See https://yihui.org/knitr/hooks/#chunk-hooks
 }
 \examples{
 

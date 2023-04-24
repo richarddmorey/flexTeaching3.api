@@ -18,6 +18,7 @@
 #' @importFrom RestRserve Application BackendRserve CORSMiddleware
 #' @importFrom base64enc base64encode
 #' @importFrom assertthat assert_that is.dir
+#' @importFrom utils packageName
 #'
 #' @examples
 ft3_serve_api <- function(
@@ -58,7 +59,7 @@ ft3_serve_api <- function(
   }
   
   if(is.null(assignments_pkg))
-    assignments_pkg <- packageName()
+    assignments_pkg <- utils::packageName()
   
   apkg_dir <- system.file(
     'ft3_pkg',

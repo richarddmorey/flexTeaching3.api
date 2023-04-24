@@ -1,7 +1,13 @@
 #' knitr hook to reset seed after running chunk
 #'
 #' This is automatically made available when .Rmd files are compiled.
+#' See https://yihui.org/knitr/hooks/#chunk-hooks
 #'
+#' @param before Whether the code is running before the chunk is evaluated
+#' @param options List of options in the current chunk
+#' @param envir Environment in which the code chunk is evaluated
+#' @param name The name of the hook 
+#' 
 #' @return Returns a hook function
 #' @export
 #'

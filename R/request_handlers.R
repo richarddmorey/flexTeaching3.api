@@ -9,6 +9,7 @@ ft3_assignment_list_handler <- function(.req, .res){
     .res$set_body()
 }
 
+#' @importFrom utils object.size
 ft3_assignment_content_config_handler <- function(.req, .res){
   pars <- ft3_get_pars(.req)
   
@@ -33,7 +34,7 @@ ft3_assignment_content_config_handler <- function(.req, .res){
   if(isTRUE(pars$cache)){
     list(
       cache = 'OK', 
-      size = object.size(content) |> as.numeric()
+      size = utils::object.size(content) |> as.numeric()
       ) |>
       jsonlite::toJSON(auto_unbox = TRUE) |>
       .res$set_body()
@@ -75,8 +76,8 @@ ft3_assignment_content_handler <- function(.req, .res){
   }else if(content$file_ext == 'pdf'){
     .res$set_content_type("application/pdf")
   }else{
-    http_error(
-      status = 500,
+    ft3_http_error(
+      status_code = 500,
       detail = paste0('Bad content file type ', content$file_ext, ' in assignment ', pars$assignment)
     )
   }
@@ -156,8 +157,8 @@ ft3_assignment_file_handler <- function(.req, .res){
     )$files
   
   if(is.null(files[[pars$file]])){
-    http_error(
-      status = 400,
+    ft3_http_error(
+      status_code = 400,
       detail = paste0('Filename ', pars$file ,' not found for assignment ', pars$assignment)
     )
   }else{
