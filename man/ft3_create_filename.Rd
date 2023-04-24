@@ -12,7 +12,7 @@ ft3_create_filename(
   assignment_mode,
   solutions,
   file_content,
-  ..
+  ...
 )
 }
 \arguments{
