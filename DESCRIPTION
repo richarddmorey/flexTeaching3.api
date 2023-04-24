@@ -29,7 +29,9 @@ Imports:
     rvest,
     httpproblems,
     crayon,
-    glue
+    glue,
+    knitr,
+    xml2
 RoxygenNote: 7.2.3
 Depends: 
     R (>= 4.2.0)
