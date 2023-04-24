@@ -2,7 +2,7 @@
 % Please edit documentation in R/assignment_skeleton.R
 \name{ft3_assignment_skeleton}
 \alias{ft3_assignment_skeleton}
-\title{Title}
+\title{Create a basic assignment}
 \usage{
 ft3_assignment_skeleton(
   target_dir,
@@ -24,5 +24,13 @@ ft3_assignment_skeleton(
 The path of the file written.
 }
 \description{
-Title
+This function will create a folder and file that contains a basic assignment for use
+with flexTeaching3. It is meant to be used on conjunction with developing a package of 
+assignments; typically you'll point to the `inst/ft3_pkg` folder in the source of the 
+assignments package you are developing.
+}
+\examples{
+\dontrun{
+ft3_assignment_skeleton('.', format = 'html_document')
+}
 }

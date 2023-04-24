@@ -16,7 +16,7 @@ MYPKGOPTIONS <- settings::options_manager(
 
 # User function that gets exported:
 
-#' Set or get options for my package
+#' Set or get options for the `flexTeaching3.api` package
 #' 
 #' @param ... Option names to retrieve option values or \code{[key]=[value]} pairs to set options.
 #'

@@ -6,7 +6,7 @@ Date: 2022-11-21
 Author: Richard D. Morey
 Maintainer: Richard D. Morey <richarddmorey@gmail.com>
 Description: Use RestRserve to serve the backend API for compiling and serving flexTeaching3 assignments. 
-License: Mozilla Public License 2.0
+License: file LICENSE
 Encoding: UTF-8
 Imports: 
     base64enc,

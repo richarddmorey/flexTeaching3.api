@@ -36,5 +36,7 @@ ft3_create_filename(
 A character string to be used as a file name
 }
 \description{
-Create a file name from flexTeaching parameters
+This function is meant to be used in the YAML header for an assingment
+that outputs a file to be downloaded. It is a useful default that can be 
+replaced.
 }

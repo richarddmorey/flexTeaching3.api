@@ -1,7 +1,9 @@
 #' Create a file name from flexTeaching parameters
 #' 
+#' This function is meant to be used in the YAML header for an assingment
+#' that outputs a file to be downloaded. It is a useful default that can be 
+#' replaced.
 #' 
-#'
 #' @param filename The original file name
 #' @param assignment The assignment reference
 #' @param id The user id parameter
@@ -16,8 +18,6 @@
 #' @importFrom tools file_ext
 #' @importFrom digest digest
 #' @export
-#'
-#' @examples
 ft3_create_filename <- function(filename, assignment, id, seed, assignment_mode, solutions, file_content, ...){
   datestamp = format(Sys.time(), "%d%m%Y-%H%M%S%Z")
   ext = tools::file_ext(filename)

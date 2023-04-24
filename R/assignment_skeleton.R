@@ -1,6 +1,11 @@
 
 
-#' Title
+#' Create a basic assignment 
+#' 
+#' This function will create a folder and file that contains a basic assignment for use
+#' with flexTeaching3. It is meant to be used on conjunction with developing a package of 
+#' assignments; typically you'll point to the `inst/ft3_pkg` folder in the source of the 
+#' assignments package you are developing.
 #'
 #' @param target_dir The directory that is to contain the assignments  
 #' @param title Title for the assignment
@@ -13,7 +18,9 @@
 #' @importFrom glue glue
 #'
 #' @examples
-#' 
+#' \dontrun{
+#' ft3_assignment_skeleton('.', format = 'html_document')
+#' }
 ft3_assignment_skeleton <- function(target_dir, title = 'Example assignment', format = c('html_document', 'html_fragment', 'pdf_document'), ...){
   
   if( !(format %in% c('html_document', 'html_fragment', 'pdf_document')) )

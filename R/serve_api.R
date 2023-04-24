@@ -13,6 +13,7 @@
 #'
 #' @return The result from the RestRserve backend's start() method
 #' @export
+#' 
 #' @importFrom jsonlite fromJSON toJSON
 #' @importFrom cachem cache_disk is.key_missing
 #' @importFrom RestRserve Application BackendRserve CORSMiddleware
@@ -20,7 +21,6 @@
 #' @importFrom assertthat assert_that is.dir
 #' @importFrom utils packageName
 #'
-#' @examples
 ft3_serve_api <- function(
   cache_options = list(
     dir = ft3_options('cache_location'),

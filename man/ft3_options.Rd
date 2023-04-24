@@ -2,7 +2,7 @@
 % Please edit documentation in R/pkg_options.R
 \name{ft3_options}
 \alias{ft3_options}
-\title{Set or get options for my package}
+\title{Set or get options for the `flexTeaching3.api` package}
 \usage{
 ft3_options(...)
 }
@@ -10,7 +10,7 @@ ft3_options(...)
 \item{...}{Option names to retrieve option values or \code{[key]=[value]} pairs to set options.}
 }
 \description{
-Set or get options for my package
+Set or get options for the `flexTeaching3.api` package
 }
 \section{Supported options}{
 
