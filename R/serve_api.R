@@ -17,7 +17,6 @@
 #' @importFrom jsonlite fromJSON toJSON
 #' @importFrom cachem cache_disk is.key_missing
 #' @importFrom RestRserve Application BackendRserve CORSMiddleware
-#' @importFrom base64enc base64encode
 #' @importFrom assertthat assert_that is.dir
 #' @importFrom utils packageName
 #'

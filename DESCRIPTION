@@ -1,6 +1,6 @@
 Package: flexTeaching3.api
 Type: Package
-Title: REST API for flexTeaching3 assignments served
+Title: REST API for flexTeaching3 serving assignments
 Version: 0.1
 Date: 2022-11-21
 Author: Richard D. Morey
@@ -9,9 +9,7 @@ Description: Use RestRserve to serve the backend API for compiling and serving f
 License: file LICENSE
 Encoding: UTF-8
 Imports: 
-    base64enc,
     cachem,
-    Cairo,
     digest,
     jsonlite,
     R.utils,
@@ -37,6 +35,8 @@ Depends:
     R (>= 4.2.0)
 Suggests: 
     testthat (>= 3.0.0),
-    stringr
+    stringr,
+    Cairo
 Config/testthat/edition: 3
 URL: https://richarddmorey.github.io/flexTeaching3.api/
+VignetteBuilder: knitr

@@ -24,7 +24,6 @@ params:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
     echo = TRUE
-  , dev='CairoPNG'
 )
 
 knitr::opts_hooks$set(
