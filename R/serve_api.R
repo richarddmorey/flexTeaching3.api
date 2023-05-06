@@ -1,3 +1,11 @@
+# https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#tabnabbing
+prevent_tabnab = RestRserve::Middleware$new(
+  process_request = function(request, response) TRUE,
+  process_response = function(request, response){
+    response$set_header('Referrer-Policy', 'no-referrer')
+  },
+  id = "prev_tabnab"
+)
 
 #' Start the flexTeaching3 API using RestRserve
 #' 
@@ -74,7 +82,7 @@ ft3_serve_api <- function(
   
     
   app = RestRserve::Application$new(
-    middleware = list(RestRserve::CORSMiddleware$new())
+    middleware = list(RestRserve::CORSMiddleware$new(), prevent_tabnab)
   )
 
   app$add_get(
