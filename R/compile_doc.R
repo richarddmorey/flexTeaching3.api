@@ -43,8 +43,12 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
     out_ext <- tools::file_ext(outfile) |> tolower()
     if(out_ext == 'html'){
       content <- ft3_read_file_text(path = outfile)
-      if(!ft3_is_fragment(outfile))
-        content <- ft3_insert_iframe_resizer(content)
+      if(!ft3_is_fragment(outfile)){
+        content |> 
+          ft3_insert_scripts(
+            c('inject_js/resize_iframe_child_script.js','inject_js/onblank.js')
+            ) -> content
+      }
     }else{
       content <- ft3_read_file_raw(path = outfile)
     }
