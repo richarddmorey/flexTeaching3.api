@@ -6,7 +6,7 @@ function sendHeight()
     if(parent.postMessage)
     {
         const height = document.documentElement.scrollHeight;
-        parent.postMessage(height, '*');
+        parent.postMessage( JSON.stringify({ "height": height }), '*');
     }
 }
 
