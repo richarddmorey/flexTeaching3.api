@@ -11,7 +11,8 @@ MYPKGOPTIONS <- settings::options_manager(
   lubridate_orders = c('HM ymd', 'ymd HM'),
   default_category_name = 'Uncategorized',
   errors_to_client = FALSE,
-  force_callr = FALSE
+  force_callr = FALSE,
+  auth_tokens = c()
 )
 
 # User function that gets exported:
@@ -33,7 +34,8 @@ MYPKGOPTIONS <- settings::options_manager(
 #'  \item{\code{lubridate_orders}}{(\code{character}) Time/date orders to use when parsing date-times using the lubridate package. }
 #'  \item{\code{default_category_name}}{(\code{character}) The name of the category in which to place uncategorized assignments. }
 #'  \item{\code{errors_to_client}}{(\code{logical}) Pass internal R error descriptions to the client interface? Doing this may pose a security risk, but may be helpful for debugging.}
-#'  \item{\code{force_callr}}{(\code{logical}) Force use of callr for rednering all documents, regardless of assignment settings? May be helpful for debugging.}
+#'  \item{\code{force_callr}}{(\code{logical}) Force use of callr for rendering all documents, regardless of assignment settings? May be helpful for debugging.}
+#'  \item{\code{auth_tokens}}{(\code{character}) A vector of valid authentication tokens. If length 0, authentication is disabled.}
 #' }
 #'
 #' @export

@@ -7,6 +7,12 @@ prevent_tabnab = RestRserve::Middleware$new(
   id = "prev_tabnab"
 )
 
+auth_mw = RestRserve::AuthMiddleware$new(
+  auth_backend = RestRserve::AuthBackendBearer$new(FUN = ft3_check_auth_tokens), 
+  routes = "/", match = "partial",
+  id = "auth_middleware"
+)
+
 #' Start the flexTeaching3 API using RestRserve
 #' 
 #' This function is meant to be run from a script, not in an interactive session.
@@ -80,9 +86,13 @@ ft3_serve_api <- function(
   
   create_cache(cache_options)
   
-    
+  mw = list(RestRserve::CORSMiddleware$new(), prevent_tabnab)
+  if(length(ft3_options('auth_tokens'))>0){
+    mw = c(mw, auth_mw)
+  }
+  
   app = RestRserve::Application$new(
-    middleware = list(RestRserve::CORSMiddleware$new(), prevent_tabnab)
+    middleware = mw
   )
 
   app$add_get(
