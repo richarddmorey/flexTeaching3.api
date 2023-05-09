@@ -1,10 +1,12 @@
 # https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#tabnabbing
-prevent_tabnab = RestRserve::Middleware$new(
+# https://stackoverflow.com/a/71195901/1129889
+extra_headers_mw = RestRserve::Middleware$new(
   process_request = function(request, response) TRUE,
   process_response = function(request, response){
-    response$set_header('Referrer-Policy', 'no-referrer')
+    response$set_header('Referrer-Policy', 'no-referrer') # Prevent tabnab
+    response$set_header('Access-Control-Expose-Headers', 'Content-Disposition') # allow cross-domain filename access
   },
-  id = "prev_tabnab"
+  id = "extra_headers"
 )
 
 auth_mw = RestRserve::AuthMiddleware$new(
@@ -86,7 +88,7 @@ ft3_serve_api <- function(
   
   create_cache(cache_options)
   
-  mw = list(RestRserve::CORSMiddleware$new(), prevent_tabnab)
+  mw = list(RestRserve::CORSMiddleware$new(), extra_headers_mw)
   if(length(ft3_options('auth_tokens'))>0){
     mw = c(mw, auth_mw)
   }
