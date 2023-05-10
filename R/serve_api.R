@@ -5,6 +5,14 @@ extra_headers_mw = RestRserve::Middleware$new(
   process_response = function(request, response){
     response$set_header('Referrer-Policy', 'no-referrer') # Prevent tabnab
     response$set_header('Access-Control-Expose-Headers', 'Content-Disposition') # allow cross-domain filename access
+    # This is to handle the fact that the server rejects the pre-flight
+    # request. I've tried to make this a targeted by-pass of the pre-flight 
+    if(
+      request$method == 'OPTIONS' &&
+      'authorization' %in% request$headers[['access-control-request-headers']] &&
+      request$headers[['access-control-request-method']] == 'GET'
+    )
+      response$set_status_code(200)
   },
   id = "extra_headers"
 )
