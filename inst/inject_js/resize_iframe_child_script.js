@@ -11,6 +11,10 @@ function sendHeight()
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
+
+  // Initially (re)set to 0 height
+  parent.postMessage( JSON.stringify({ "height": 0 }), '*');
+
   // Do this 5 times, once every 500ms, just to make sure we 
   // account for slow scripts (eg MathJax)
   for (let i = 0; i < 5; i++) {
