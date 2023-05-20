@@ -32,7 +32,7 @@ auth_mw = RestRserve::AuthMiddleware$new(
 #' @param assignments_pkg Package containing the assignments
 #' @param assignments_dir Optional directory containing the assignments; if not specified, will be inferred from assignments_pkg.
 #' @param http_port Port to start the server
-#' @param log_options List of options for the log, to be passed to RestRserve::Logger$new()
+#' @param backend RestRserve backend
 #' @param ... Further arguments to be passed to the RestRserve backend's start() method
 #'
 #' @return The result from the RestRserve backend's start() method
@@ -51,8 +51,8 @@ ft3_serve_api <- function(
     ),
   assignments_pkg = ft3_options('assignments_pkg'),
   assignments_dir = NULL,
-  http_port = 8080, 
-  log_options = list(level = 'off'),
+  http_port = 8080,
+  backend = RestRserve::BackendRserve$new(),
   ...
 )
 {
@@ -104,6 +104,9 @@ ft3_serve_api <- function(
   app = RestRserve::Application$new(
     middleware = mw
   )
+  
+  # Use logger lg defined by .onLoad
+  app$logger = lg
 
   app$add_get(
     path = "/ft3/api/v1/assignments", 
@@ -146,7 +149,5 @@ ft3_serve_api <- function(
     'regex'
   )
   
-  app$logger = do.call(what = RestRserve::Logger$new, args = log_options)
-  backend = RestRserve::BackendRserve$new()
   backend$start(app, http_port = http_port, ...)
 }

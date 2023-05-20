@@ -9,7 +9,7 @@ ft3_serve_api(
   assignments_pkg = ft3_options("assignments_pkg"),
   assignments_dir = NULL,
   http_port = 8080,
-  log_options = list(level = "off"),
+  backend = RestRserve::BackendRserve$new(),
   ...
 )
 }
@@ -22,7 +22,7 @@ ft3_serve_api(
 
 \item{http_port}{Port to start the server}
 
-\item{log_options}{List of options for the log, to be passed to RestRserve::Logger$new()}
+\item{backend}{RestRserve backend}
 
 \item{...}{Further arguments to be passed to the RestRserve backend's start() method}
 }
