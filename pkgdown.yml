@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-05-19T18:09Z
+last_built: 2023-05-20T12:24Z
 urls:
   reference: https://richarddmorey.github.io/flexTeaching3.api/reference
   article: https://richarddmorey.github.io/flexTeaching3.api/articles
