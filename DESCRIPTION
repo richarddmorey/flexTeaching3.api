@@ -15,6 +15,7 @@ Imports:
     R.utils,
     RestRserve,
     rmarkdown,
+    tinytex,
     settings,
     tools,
     utils,
