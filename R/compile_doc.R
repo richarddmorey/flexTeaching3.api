@@ -1,11 +1,12 @@
 
-#' @importFrom lubridate now
 #' @importFrom cachem is.key_missing 
 #' @importFrom tools file_ext
 ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options('cache_location'), ...){
   
-  use_cache = !isFALSE(ft3_options('use_cache'))
   doc_file <- normalizePath(doc_file)
+  ext <- tools::file_ext(doc_file) |> tolower()
+  use_cache = !isFALSE(ft3_options('use_cache')) && !(ext == 'html')
+  
   settings <- ft3_assignment_settings(doc_file)
   pars$fingerprint = ft3_get_fingerprint(pars$seed, pars$id, settings, pars$assignment_mode)
   seed0 <-  ifelse(
@@ -30,15 +31,18 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
   }
   if(!use_cache || is.null(ft3_cache) || cachem::is.key_missing(out))
   {
-    ext <- tools::file_ext(doc_file) |> tolower()
-    temp_space_path <- ft3_prepare_temp_space(doc_file, scratch_dir)
-    on.exit({
-      unlink(temp_space_path, recursive = TRUE, force = TRUE)
-    })
-    if(ext %in% c('rmd','rmarkdown')){
-        outfile <- ft3_compile_doc_rmd(rmd_file = doc_file, pars = pars, local_seed = local_seed, temp_space_path = temp_space_path, ...)
+    if(ext == 'html'){
+      outfile <- doc_file
     }else{
-      stop('Unknown document type ', ext)
+      temp_space_path <- ft3_prepare_temp_space(doc_file, scratch_dir)
+      on.exit({
+        unlink(temp_space_path, recursive = TRUE, force = TRUE)
+      })
+      if(ext %in% c('rmd','rmarkdown')){
+        outfile <- ft3_compile_doc_rmd(rmd_file = doc_file, pars = pars, local_seed = local_seed, temp_space_path = temp_space_path, ...)
+      }else{
+        stop('Unknown document type ', ext)
+      }
     }
     # Check file content type
     out_ext <- tools::file_ext(outfile) |> tolower()
@@ -75,6 +79,8 @@ ft3_assignment_settings <- function(doc_file){
   doc_file <- normalizePath(doc_file)
   if(ext %in% c('rmd','rmarkdown')){
     settings = ft3_assignment_settings_rmd(doc_file)
+  }else if(ext == 'html'){
+    settings = ft3_assignment_settings_html(doc_file)
   }else{
     stop('Unknown document type ', ext)
   }

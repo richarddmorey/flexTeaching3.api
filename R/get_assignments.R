@@ -8,13 +8,13 @@ ft3_get_assignments = function(assignments_dir =  ft3_options('assignments_dir')
     lapply(\(d){
       d |>
         dir(
-          pattern = '^index.rmd$',
+          pattern = '^index.(rmd|html)$',
           ignore.case = TRUE,
           include.dirs = FALSE,
           full.names = TRUE
           ) -> index_files
       if(length(index_files) == 0) return(NULL)
-      index_file <- index_files[1] 
+      index_file <- sort(index_files, decreasing = TRUE)[1]
       ft3_assignment_settings(index_file)
     }) |>
     Filter(Negate(is.null), x = _) -> assignments
