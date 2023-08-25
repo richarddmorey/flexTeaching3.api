@@ -149,5 +149,5 @@ ft3_serve_api <- function(
     'regex'
   )
   
-  backend$start(app, http_port = http_port, ...)
+  backend$start(app, http_port = http_port, qap=FALSE, ...)
 }
