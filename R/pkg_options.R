@@ -3,6 +3,7 @@
 MYPKGOPTIONS <- settings::options_manager(
   master_secret = NULL,
   scratch_dir   = NULL,
+  use_cache     = TRUE,
   cache_location = NULL,
   assignments_pkg = NULL,
   assignments_dir = NULL,
@@ -26,6 +27,7 @@ MYPKGOPTIONS <- settings::options_manager(
 #' \itemize{
 #'  \item{\code{master_secret}}{(\code{character})  Master secret to use for generation of seeds. If NULL when the package is loaded, a random master seed is generated (with a warning). }
 #'  \item{\code{scratch_dir}}{(\code{character})  Disk location to use a temporary space for rendering. If NULL, a temporary directory is used.}
+#'  \item{\code{use_cache}}{(\code{logical}) Read from and write to cache for assignments?}
 #'  \item{\code{cache_location}}{(\code{character})  Disk location to save the content cache. If NULL, a temporary directory is used.}
 #'  \item{\code{assignments_pkg}}{(\code{character}) Installed package to use for the assignments. If NULL, this package is used. }
 #'  \item{\code{assignments_dir}}{(\code{character}) Directory to use for the assignments. If NULL, it will be determined from \code{assignments_pkg}.}

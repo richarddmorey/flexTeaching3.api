@@ -4,6 +4,7 @@
 #' @importFrom tools file_ext
 ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options('cache_location'), ...){
   
+  use_cache = !isFALSE(ft3_options('use_cache'))
   doc_file <- normalizePath(doc_file)
   settings <- ft3_assignment_settings(doc_file)
   pars$fingerprint = ft3_get_fingerprint(pars$seed, pars$id, settings, pars$assignment_mode)
@@ -24,10 +25,10 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
     seed = seed0,
     data_salt = settings[['data_salt']]
   )
-  if(!is.null(ft3_cache)){
+  if(!is.null(ft3_cache) && use_cache){
     out <- ft3_cache$get(cache_key)
   }
-  if(is.null(ft3_cache) || cachem::is.key_missing(out))
+  if(!use_cache || is.null(ft3_cache) || cachem::is.key_missing(out))
   {
     ext <- tools::file_ext(doc_file) |> tolower()
     temp_space_path <- ft3_prepare_temp_space(doc_file, scratch_dir)
@@ -62,7 +63,7 @@ ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options
       fingerprint = pars$fingerprint,
       js = settings[['on_load']]
     )
-    if(!is.null(ft3_cache) && (is.null(settings$cache) || settings$cache))
+    if(!is.null(ft3_cache) && (is.null(settings$cache) || settings$cache) && use_cache)
       ft3_cache$set(cache_key, out)
   }
   return(out)
