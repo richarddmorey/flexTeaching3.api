@@ -30,7 +30,8 @@ Imports:
     glue,
     knitr,
     xml2,
-    lgr
+    lgr,
+    yaml
 RoxygenNote: 7.2.3
 Depends: 
     R (>= 4.2.0)
