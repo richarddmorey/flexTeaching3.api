@@ -1,5 +1,5 @@
 
-#' @importFrom yaml yaml_front_matter
+#' @importFrom yaml read_yaml
 #' @importFrom utils URLencode
 ft3_assignment_settings_html <- function(assignment_file){
   settings_file <- dirname(assignment_file) |> file.path('index.yaml')
