@@ -1,36 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/404.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/index.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_assignment_skeleton.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_create_filename.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_options.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_replace_file_ext.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_seed_status_hook.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_serve_api.html</loc>
-  </url>
-  <url>
-    <loc>https://richarddmorey.github.io/flexTeaching3.api/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/404.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/LICENSE-text.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/authors.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/index.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/FlexTeaching3.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_assignment_skeleton.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_check_pkg_dir.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_create_filename.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_options.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_replace_file_ext.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_seed_status_hook.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/ft3_serve_api.html</loc></url>
+<url><loc>https://richarddmorey.github.io/flexTeaching3.api/reference/index.html</loc></url>
 </urlset>
+
