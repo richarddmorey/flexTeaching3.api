@@ -31,7 +31,8 @@ Imports:
     knitr,
     xml2,
     lgr,
-    yaml
+    yaml,
+    R6
 RoxygenNote: 7.2.3
 Depends: 
     R (>= 4.2.0)

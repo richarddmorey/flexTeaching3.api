@@ -6,6 +6,7 @@ MYPKGOPTIONS <- settings::options_manager(
   use_cache     = TRUE,
   cache_location = NULL,
   assignments_pkg = NULL,
+  assignments_subdir = 'ft3_pkg',
   assignments_dir = NULL,
   default_file_icon = 'fa-regular fa-download',
   timezone = '', # Defaults to current time zone
@@ -30,6 +31,7 @@ MYPKGOPTIONS <- settings::options_manager(
 #'  \item{\code{use_cache}}{(\code{logical}) Read from and write to cache for assignments?}
 #'  \item{\code{cache_location}}{(\code{character})  Disk location to save the content cache. If NULL, a temporary directory is used.}
 #'  \item{\code{assignments_pkg}}{(\code{character}) Installed package to use for the assignments. If NULL, this package is used. }
+#'  \item{\code{assignments_subdir}}{(\code{character}) The subdirectory in the package installation wherein the ft3 files can be found.}
 #'  \item{\code{assignments_dir}}{(\code{character}) Directory to use for the assignments. If NULL, it will be determined from \code{assignments_pkg}.}
 #'  \item{\code{default_file_icon}}{(\code{character}) Default icon to use for file downloads if none is specified. }
 #'  \item{\code{timezone}}{(\code{character}) Default timezone to use for assignment restrictions. Empty string is system time zone. }

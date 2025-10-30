@@ -1,17 +1,17 @@
 
 #' @importFrom cachem is.key_missing 
 #' @importFrom tools file_ext
-ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options('cache_location'), ...){
+ft3_compile_doc <- function(doc_file, pars, ft3_cache, scratch_dir = ft3_options('cache_location'), use_cache = TRUE, master_secret = ft3_options('master_secret'), ...){
   
   doc_file <- normalizePath(doc_file)
   ext <- tools::file_ext(doc_file) |> tolower()
-  use_cache = !isFALSE(ft3_options('use_cache')) && !(ext == 'html')
+  use_cache = !isFALSE(use_cache) && !(ext == 'html')
   
   settings <- ft3_assignment_settings(doc_file)
   pars$fingerprint = ft3_get_fingerprint(pars$seed, pars$id, settings, pars$assignment_mode)
   seed0 <-  ifelse(
     pars$assignment_mode,
-    ft3_seed_from_master(ft3_options('master_secret'), settings[['seed_salt']]),
+    ft3_seed_from_master(master_secret, settings[['seed_salt']]),
     pars$seed
   )
   cache_key = ft3_get_cache_key(
