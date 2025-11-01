@@ -11,13 +11,13 @@ ft3_animal_seed <- function(seed, salt){
     {
       with(name_parts, 
       {
-        tolower(paste(sample(adjectives, 1), sample(animals, 1), sep='_'))
+        tolower(paste(sample(adjectives, 1), sample(animals, 1), sep='-'))
       })      
     }, int_hash)
   
   alpha_num = R.utils::withSeed({ft3_random_alpha_num(1)},
                                 int_hash)
-  return(paste(animals, alpha_num,  sep = "_"))
+  return(paste(animals, alpha_num,  sep = "-"))
 }
 
 

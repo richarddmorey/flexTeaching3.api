@@ -10,7 +10,7 @@ R6 Class Representing a set of flexTeaching3 assignments
 }
 \examples{
 # example code
-ft3 <- FlexTeaching3$new()
+ft3 <- FlexTeaching3$new(assignment_pkg = 'flexTeaching3.api', master_secret="s3cR3t")
 rm(ft3)
 Report settings in use by the FlexTeaching3 object
 
@@ -19,8 +19,15 @@ Report settings in use by the FlexTeaching3 object
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-FlexTeaching3-settings}{\code{FlexTeaching3$settings()}}
+\item \href{#method-FlexTeaching3-header_footer_json}{\code{FlexTeaching3$header_footer_json()}}
+\item \href{#method-FlexTeaching3-assignments_json}{\code{FlexTeaching3$assignments_json()}}
+\item \href{#method-FlexTeaching3-assignment_content}{\code{FlexTeaching3$assignment_content()}}
+\item \href{#method-FlexTeaching3-assignment_settings}{\code{FlexTeaching3$assignment_settings()}}
+\item \href{#method-FlexTeaching3-assignment_seed}{\code{FlexTeaching3$assignment_seed()}}
+\item \href{#method-FlexTeaching3-assignment_cachekey}{\code{FlexTeaching3$assignment_cachekey()}}
+\item \href{#method-FlexTeaching3-assignment_files_json}{\code{FlexTeaching3$assignment_files_json()}}
+\item \href{#method-FlexTeaching3-assignment_file_content}{\code{FlexTeaching3$assignment_file_content()}}
 \item \href{#method-FlexTeaching3-new}{\code{FlexTeaching3$new()}}
-\item \href{#method-FlexTeaching3-finalize}{\code{FlexTeaching3$finalize()}}
 \item \href{#method-FlexTeaching3-clone}{\code{FlexTeaching3$clone()}}
 }
 }
@@ -34,6 +41,253 @@ Report settings in use by the FlexTeaching3 object
 
 \subsection{Returns}{
 A list containing the relevant settings
+
+Get the header and footer for the assignments (for inserting
+into the interface)
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-header_footer_json"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-header_footer_json}{}}}
+\subsection{Method \code{header_footer_json()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$header_footer_json()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A JSON string containing the header and footer
+Get a json listing of assignments appropriate for making a select box
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignments_json"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignments_json}{}}}
+\subsection{Method \code{assignments_json()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignments_json(current_assignment = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{current_assignment}}{Assignment which, if hidden, will become visible because it is currently selected.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A JSON string
+
+Compile assignment and return the data
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignment_content"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignment_content}{}}}
+\subsection{Method \code{assignment_content()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignment_content(
+  assignment,
+  id,
+  seed,
+  solutions,
+  assignment_mode,
+  use_cache = TRUE,
+  cache_only = FALSE,
+  ...
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{assignment}}{Assignment to compile}
+
+\item{\code{id}}{(character) id}
+
+\item{\code{seed}}{(character) seed}
+
+\item{\code{solutions}}{(logical) Whether to include solutions}
+
+\item{\code{assignment_mode}}{(logical) Use assignment mode}
+
+\item{\code{use_cache}}{(logical) Use the cached version, if it exists?}
+
+\item{\code{cache_only}}{(logical) If TRUE, don't return document}
+
+\item{\code{...}}{Arguments to pass to ft3_compile_doc}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list containing the assignment data
+
+Compile assignment and return configuration data only
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignment_settings"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignment_settings}{}}}
+\subsection{Method \code{assignment_settings()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignment_settings(
+  assignment,
+  id,
+  seed,
+  solutions,
+  assignment_mode,
+  use_cache = TRUE,
+  cache_only = FALSE,
+  ...
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{assignment}}{Assignment to compile}
+
+\item{\code{id}}{(character) id}
+
+\item{\code{seed}}{(character) seed}
+
+\item{\code{solutions}}{(logical) Whether to include solutions}
+
+\item{\code{assignment_mode}}{(logical) Use assignment mode}
+
+\item{\code{use_cache}}{(logical) Use the chached version, if it exists?}
+
+\item{\code{cache_only}}{(logical) If TRUE, don't return document}
+
+\item{\code{...}}{Arguments to pass to ft3_compile_doc}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list containing the assignment configuration
+
+Get the assignment seed for a particular master seed
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignment_seed"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignment_seed}{}}}
+\subsection{Method \code{assignment_seed()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignment_seed(assignment, master_seed)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{assignment}}{The assignment id}
+
+\item{\code{master_seed}}{The master seed}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+list containing the master seed and assignment seed
+Check whether cache key exists for parameters
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignment_cachekey"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignment_cachekey}{}}}
+\subsection{Method \code{assignment_cachekey()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignment_cachekey(
+  assignment,
+  id,
+  seed,
+  solutions,
+  assignment_mode
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{assignment}}{Assignment to compile}
+
+\item{\code{id}}{(character) id}
+
+\item{\code{seed}}{(character) seed}
+
+\item{\code{solutions}}{(logical) Whether to include solutions}
+
+\item{\code{assignment_mode}}{(logical) Use assignment mode}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+List containing the cache status
+Get list of files for an assignment
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignment_files_json"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignment_files_json}{}}}
+\subsection{Method \code{assignment_files_json()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignment_files_json(assignment, assignment_mode)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{assignment}}{}
+
+\item{\code{assignment_mode}}{}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A JSON list of files
+Compile assignment and return configuration data only
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-FlexTeaching3-assignment_file_content"></a>}}
+\if{latex}{\out{\hypertarget{method-FlexTeaching3-assignment_file_content}{}}}
+\subsection{Method \code{assignment_file_content()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$assignment_file_content(
+  assignment,
+  file,
+  id,
+  seed,
+  solutions,
+  assignment_mode,
+  use_cache = TRUE,
+  ...
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{assignment}}{Assignment to compile}
+
+\item{\code{file}}{The id of the file to return}
+
+\item{\code{id}}{(character) id}
+
+\item{\code{seed}}{(character) seed}
+
+\item{\code{solutions}}{(logical) Whether to include solutions}
+
+\item{\code{assignment_mode}}{(logical) Use assignment mode}
+
+\item{\code{use_cache}}{(logical) Use the cached version, if it exists?}
+
+\item{\code{...}}{Arguments to pass to ft3_compile_doc}
+
+\item{\code{cache_only}}{(logical) If TRUE, don't return document}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list containing the file content and name
 }
 }
 \if{html}{\out{<hr>}}
@@ -45,7 +299,7 @@ Create a new FlexTeaching3 object
 \if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$new(
   scratch_dir = NULL,
   assignment_pkg,
-  master_seed,
+  master_secret,
   cachedisk_settings = list()
 )}\if{html}{\out{</div>}}
 }
@@ -57,7 +311,7 @@ Create a new FlexTeaching3 object
 
 \item{\code{assignment_pkg}}{Package containing flexTeaching3 assignment content}
 
-\item{\code{master_seed}}{Master seed used for generating assignment seeds}
+\item{\code{master_secret}}{Master seed used for generating assignment seeds}
 
 \item{\code{cachedisk_settings}}{an optional list of disk cache settings (see ?cachem::cache_disk)}
 }
@@ -66,16 +320,6 @@ Create a new FlexTeaching3 object
 \subsection{Returns}{
 A new FlexTeaching3 object
 }
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FlexTeaching3-finalize"></a>}}
-\if{latex}{\out{\hypertarget{method-FlexTeaching3-finalize}{}}}
-\subsection{Method \code{finalize()}}{
-Clean up when object is destroyed
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlexTeaching3$finalize()}\if{html}{\out{</div>}}
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FlexTeaching3-clone"></a>}}
